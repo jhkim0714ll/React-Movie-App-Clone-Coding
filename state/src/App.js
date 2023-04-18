@@ -1,29 +1,18 @@
-import "./App.css";
 import React from "react";
+import { BrowserRouter, HashRouter, Route } from "react-router-dom";
+import About from "./routes/About";
+import Home from "./routes/home";
+import Details from "./routes/Details";
 
-class App extends React.Component {
-  state = {
-    count: 0,
-  };
-  add = () => {
-    this.setState((current) => ({
-      count: current.count + 1,
-    }));
-  };
-  minus = () => {
-    this.setState((current) => ({
-      count: current.count - 1,
-    }));
-  };
-  render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Navigation />
+      <Route path="/" exact={true} Component={Home} />
+      <Route path="/about" Component={About} />
+      <Route path="/about" Component={Details} />
+    </BrowserRouter>
+  );
 }
 
 export default App;
